@@ -42,6 +42,7 @@ function ComplaintForm() {
     if (!form.dateOfIssue) errs.dateOfIssue = 'Date of issue is required'
     if (!form.authority) errs.authority = 'Please select an authority'
     if (form.citizenEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.citizenEmail)) errs.citizenEmail = 'Enter a valid email'
+    if (!photo) errs.photo = 'Issue photo is required'  // ✅ CHANGED
     return errs
   }
 
@@ -171,10 +172,10 @@ function ComplaintForm() {
               {errors.issueStatement && <span className="error-msg">{errors.issueStatement}</span>}
             </div>
             <div className="form-group">
-              <label>Issue Photo (optional, max 5MB)</label>
+              <label>Issue Photo * (max 5MB)</label>  {/* ✅ CHANGED */}
               <div className="photo-upload-area">
                 <input type="file" id="issuePhoto" accept="image/*" onChange={handlePhoto} style={{ display: 'none' }} />
-                <label htmlFor="issuePhoto" className="photo-label">
+                <label htmlFor="issuePhoto" className={`photo-label ${errors.photo ? 'input-error' : ''}`}>
                   {photoPreview ? (
                     <img src={photoPreview} alt="Preview" className="photo-preview" />
                   ) : (
@@ -186,7 +187,7 @@ function ComplaintForm() {
                   )}
                 </label>
               </div>
-              {errors.photo && <span className="error-msg">{errors.photo}</span>}
+              {errors.photo && <span className="error-msg">{errors.photo}</span>}  {/* ✅ shows error */}
               {photo && <p className="file-name">📎 {photo.name}</p>}
             </div>
           </div>

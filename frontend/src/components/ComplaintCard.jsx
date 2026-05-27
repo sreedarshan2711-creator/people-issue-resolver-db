@@ -22,10 +22,10 @@ function ComplaintCard({ complaint, onDelete, onStatusChange, isAdmin }) {
       </div>
 
       <div className="card-body">
-        <p className="card-issue">{complaint.issueStatement.substring(0, 120)}{complaint.issueStatement.length > 120 ? '...' : ''}</p>
+        <p className="card-issue">{complaint.issueStatement?.substring(0, 120)}{complaint.issueStatement?.length > 120 ? '...' : ''}</p>
         <div className="card-info-row">
           <span>📞 {complaint.mobileNumber}</span>
-          <span>📍 {complaint.address.substring(0, 40)}{complaint.address.length > 40 ? '...' : ''}</span>
+          <span>📍 {complaint.address?.substring(0, 40)}{complaint.address?.length > 40 ? '...' : ''}</span>
         </div>
       </div>
 

@@ -1,5 +1,4 @@
 import React from 'react'
-
 function StatusBadge({ status }) {
   const map = {
     Pending: 'badge-pending',
